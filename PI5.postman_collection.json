@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "300701f2-1123-4925-858c-5a1e85b41f31",
+		"name": "PI5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17434015"
+	},
+	"item": [
+		{
+			"name": "Base para enviar os dados",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"temperatura_ambiente\": 22.5,\r\n    \"umidade_solo\": 55.0,\r\n    \"umidade_ar\": 70.0,\r\n    \"alerta\": false,\r\n    \"rega\": false,\r\n    \"telefone\": \"5511968487960\",\r\n    \"api_key\": \"7724667\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/register_sensor_data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"register_sensor_data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
