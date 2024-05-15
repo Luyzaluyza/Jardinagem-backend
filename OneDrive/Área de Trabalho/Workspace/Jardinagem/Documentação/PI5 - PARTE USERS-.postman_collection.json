@@ -127,5 +127,37 @@
 			},
 			"response": []
 		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNTc0NDc5MSwianRpIjoiMDQwNTNhMWEtNzhkOS00YTFlLWE0ODYtNDIwOGM4NTE2YmYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Imx1eXphNTE5QGdtYWlsLmNvbSIsIm5iZiI6MTcxNTc0NDc5MSwiY3NyZiI6IjRiZGFlMjJlLWQyYTgtNDg2My1iZjk5LWNmNjBjMTdhODY1ZiIsImV4cCI6MTcxNTc0NTY5MX0.2CSy2DZpH8UIfcy0xNLMYHCjTciQtq_EW8DNVgbsmhE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
 	]
 }
