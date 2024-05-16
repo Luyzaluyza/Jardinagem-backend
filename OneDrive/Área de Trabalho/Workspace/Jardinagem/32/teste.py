@@ -18,7 +18,6 @@ def do_connect(ssid, key):
 def collect_data():
     dht11 = dht.DHT11(Pin(4))
     dht11.measure()
-    time.sleep(0.5)
     umidade_ar = dht11.humidity()
     temperatura = dht11.temperature()
     
@@ -47,15 +46,15 @@ def send_data_to_api(temperatura, umidade_ar, umidade_solo_percent):
         print('Erro ao enviar dados para API:', e)
 
 def main():
-    ssid = 'wifi'
-    password = 'senha'
+    ssid = 'PEEWEE 2.4'
+    password = 'S0N1c_WEREG@RURUMON'
     do_connect(ssid, password)
     
     while True:
         temperatura, umidade_ar, umidade_solo_percent = collect_data()
         send_data_to_api(temperatura, umidade_ar, umidade_solo_percent)
         print('Aguardando 3 minutos...')
-        time.sleep(180)  # Aguardando 5 minutos (300 segundos)
+        time.sleep(180) 
 
 if __name__ == "__main__":
     main()
