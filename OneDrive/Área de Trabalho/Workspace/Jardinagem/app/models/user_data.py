@@ -11,6 +11,7 @@ def insert_user_data(telefone, api_key, planta_id, email, senha, nome):
         "email": email,
         "senha": senha,
         "nome": nome,
+        "ultimo_alerta": None,
         "data_hora": datetime.now()
     })
 
@@ -46,4 +47,17 @@ def delete_user_data(user_id):
 
 def convert_objectid_to_str(user):
     user['_id'] = str(user['_id'])
+    return user
+
+def update_ultimo_alerta(planta_id):
+    user_collection = db.users
+    result = user_collection.update_one(
+        {"planta_id": planta_id},
+        {"$set": {"ultimo_alerta": datetime.now()}}
+    )
+    return result.modified_count > 0
+
+def get_user_by_planta_id(planta_id):
+    user_collection = db.users
+    user = user_collection.find_one({"planta_id": planta_id})
     return user

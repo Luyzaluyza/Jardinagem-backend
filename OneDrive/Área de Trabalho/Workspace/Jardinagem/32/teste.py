@@ -30,7 +30,7 @@ def collect_data():
     return temperatura, umidade_ar, umidade_solo_percent
 
 def send_data_to_api(temperatura, umidade_ar, umidade_solo_percent):
-    API_URL = 'http://192.168.1.110:5001/api/data' 
+    API_URL = 'http://192.168.1.110:5000/api/receive_data'  # Substitua pelo endpoint correto da sua API
     json_readings = {
         'temperatura_ambiente': temperatura,
         'umidade_ar': umidade_ar,
@@ -47,15 +47,15 @@ def send_data_to_api(temperatura, umidade_ar, umidade_solo_percent):
         print('Erro ao enviar dados para API:', e)
 
 def main():
-    ssid = 'nomeDoWifi'
-    password = 'Senha'
+    ssid = 'wifi'
+    password = 'senha'
     do_connect(ssid, password)
     
     while True:
         temperatura, umidade_ar, umidade_solo_percent = collect_data()
         send_data_to_api(temperatura, umidade_ar, umidade_solo_percent)
-        print('Aguardando 5 minutos...')
-        time.sleep(10)
+        print('Aguardando 3 minutos...')
+        time.sleep(180)  # Aguardando 5 minutos (300 segundos)
 
 if __name__ == "__main__":
     main()
