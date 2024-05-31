@@ -24,17 +24,17 @@ def collect_data():
     pin_umidade_solo = 35
     adc = ADC(Pin(pin_umidade_solo))
     umidade_solo = adc.read()
-    umidade_solo_percent = int((umidade_solo / 4095.0) * 100) 
-    
+    umidade_solo_percent = int((4095 - umidade_solo) * 100 / 2175) 
+    print(umidade_solo_percent)
     return temperatura, umidade_ar, umidade_solo_percent
 
 def send_data_to_api(temperatura, umidade_ar, umidade_solo_percent):
-    API_URL = 'http://192.168.1.110:5000/api/receive_data'  # Substitua pelo endpoint correto da sua API
+    API_URL = 'http://192.168.0.11:5002/api/receive_data'  # Substitua pelo endpoint correto da sua API
     json_readings = {
         'temperatura_ambiente': temperatura,
         'umidade_ar': umidade_ar,
         'umidade_solo': umidade_solo_percent,
-        'planta_id': '123',  # ID da planta
+        'planta_id': '1234',  # ID da planta
         'timestamp': time.time()
     }
     
@@ -46,8 +46,8 @@ def send_data_to_api(temperatura, umidade_ar, umidade_solo_percent):
         print('Erro ao enviar dados para API:', e)
 
 def main():
-    ssid = 'PEEWEE 2.4'
-    password = 'S0N1c_WEREG@RURUMON'
+    ssid = 'CLARO_2GBBAD1E'
+    password = 'E7BBAD1E'
     do_connect(ssid, password)
     
     while True:

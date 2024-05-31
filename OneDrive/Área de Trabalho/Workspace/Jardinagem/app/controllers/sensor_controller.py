@@ -11,8 +11,8 @@ def receive_data():
     temperatura = data.get('temperatura_ambiente')
     umidade_solo = data.get('umidade_solo')
     umidade_ar = data.get('umidade_ar')
-    alerta = False
-    rega = False
+    alerta = True
+    rega = True
 
     user = get_user_by_planta_id(planta_id)
 
@@ -22,7 +22,7 @@ def receive_data():
         ultimo_alerta = user.get('ultimo_alerta')
 
         now = datetime.now()
-        if umidade_solo < 60:
+        if umidade_solo >= 0:
             if not ultimo_alerta or now - ultimo_alerta > timedelta(hours=6):
                 alerta = True
                 enviar_mensagem_whatsapp(telefone, api_key, "Sua plantinha está com sede, regue-a o mais rápido possível.")
